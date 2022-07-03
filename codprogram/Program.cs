@@ -77,3 +77,83 @@ int NumberInput(string text)//Метод ввода и проверки на ч�
     return number;
 }
 
+(int, string[]) SecondArrayCreationByCondition(string[] array, int condition, int conditionNumer)//Метод создания нового массива в зависимости от условия
+{
+    int count = 0;
+    switch (condition)
+    {
+        case 1:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length == conditionNumer) count++;
+            break;
+        case 2:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length > conditionNumer) count++;
+            break;
+        case 3:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length >= conditionNumer) count++;
+            break;
+        case 4:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length < conditionNumer) count++;
+            break;
+        case 5:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length <= conditionNumer) count++;
+            break;
+        case 6:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length != conditionNumer) count++;
+            break;
+        case 7:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length == conditionNumer) count++;
+            break;
+    }
+    string[] resultArray = new string[count];
+    return (count, resultArray);
+}
+
+void ArrayFillingByCondition(string[] array, string[] fillArray, int condition, int conditionNumer)//Метод заполнения массива в зависимости от условия
+{
+    int index = 0;
+    switch (condition)
+    {
+        case 1:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length == conditionNumer)
+                {
+                    fillArray[index] = array[i];
+                    index++;
+                }
+            break;
+        case 2:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length > conditionNumer)
+                {
+                    fillArray[index] = array[i];
+                    index++;
+                }
+            break;
+        case 3:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length >= conditionNumer)
+                {
+                    fillArray[index] = array[i];
+                    index++;
+                }
+            break;
+        case 4:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length < conditionNumer)
+                {
+                    fillArray[index] = array[i];
+                    index++;
+                }
+            break;
+        case 5:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length <= conditionNumer)
+                {
+                    fillArray[index] = array[i];
+                    index++;
+                }
+            break;
+        case 6:
+            for (int i = 0; i < array.Length; i++) if (array[i].Length != conditionNumer)
+                {
+                    fillArray[index] = array[i];
+                    index++;
+                }
+            break;
+    }
+}
