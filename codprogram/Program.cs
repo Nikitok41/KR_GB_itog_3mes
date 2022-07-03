@@ -157,3 +157,39 @@ void ArrayFillingByCondition(string[] array, string[] fillArray, int condition, 
             break;
     }
 }
+
+System.Console.OutputEncoding = System.Text.Encoding.Unicode;// Не на всех компьютерах установлена Русская кодировка.
+Console.Clear();
+
+var action = new Dictionary<int, string>()
+{
+    { 1 , "="},
+    { 2 , ">"},
+    { 3 , ">="},
+    { 4 , "<"},
+    { 5 , "<="},
+    { 6 , "!="},
+    { 7 , "null"}
+};
+
+int conditionNumer = 0;
+int condition = ConditionCheck();
+if ((condition > 0) && (condition < 7))
+    conditionNumer = NumberInput($"число ( от 1 до 7 ) для условия поиска кол-во символов {action[condition]}");
+
+string[] array = ArrayCreation(); // Создаю изначальный массив
+(int count, string[] secondArray) = SecondArrayCreationByCondition(array, condition, conditionNumer);
+
+Console.Clear();
+
+if (condition == 7)// если условие 7 ( кол-во пустых элементов ) нужно поменять схему вывода
+{
+    Console.WriteLine($" В изначальном массиве ищем кол-во пустых эллементов");
+    Console.Write($"\n{PrintArray(array)} -> {count} кол-во пустых ячеек");
+}
+else
+{
+    Console.WriteLine($" В изначальном массиве ищем элементы по условию {action[condition]} {conditionNumer}");
+    ArrayFillingByCondition(array, secondArray, condition, conditionNumer);
+    Console.Write($"\n{PrintArray(array)} -> {PrintArray(secondArray)}");
+}
